@@ -1,0 +1,33 @@
+[project]
+name = "photomanager"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Edward Parry",email = "edward@eparry.uk"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    'tqdm'
+]
+
+[tool.pylint.main]
+source-roots = "./src/*"
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.poetry]
+packages = [{include = "photo_manager", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.9.0"
+flake8 = "^7.3.0"
+isort = "^6.0.1"
+mypy = "^1.18.2"
+pylint = "^3.3.8"
+pytest = "8.4.2"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
