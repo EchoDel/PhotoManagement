@@ -1,3 +1,5 @@
+import logging
+import datetime
 from pathlib import Path
 
 import PySimpleGUI as sg
@@ -6,10 +8,13 @@ from photo_frame.config_management import get_program_config, load_photo_config,
     save_config_file, sample_config_maintain_folder, setup_program_config_file
 
 config_path = Path('local_config.json')
+logger = logging.getLogger(__name__)
 
 
 def main(config_path: Path = config_path):
     from photo_frame.UI import convert_to_bytes, G_SIZE, graph, window
+
+    logging.basicConfig(filename='photo_frame.log', level=logging.INFO)
 
     # Read the photos to display
     setup_program_config_file()
@@ -25,6 +30,7 @@ def main(config_path: Path = config_path):
         else:
             file_to_display = sample_config_random(photos_config)
 
+        logger.info(f"{datetime.datetime.now()}, {file_to_display}")
         if not previous_image == file_to_display:
             try:
                 img_data, img_width, img_height = convert_to_bytes(str(file_to_display), resize=G_SIZE)

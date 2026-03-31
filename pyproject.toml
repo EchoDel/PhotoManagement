@@ -39,7 +39,7 @@ pylint = "^3.3.8"
 pytest = "8.4.2"
 
 [tool.poetry.group.photo_frame.dependencies]
-PySimpleGUI = { git = "git+https://github.com/EchoDel/PySimpleGUI-4-foss.git"}
+PySimpleGUI = {git = "git+https://github.com/EchoDel/PySimpleGUI-4-foss.git"}
 pillow = "12.1.1"
 pillow-heif = ">=1.3.0"
 
