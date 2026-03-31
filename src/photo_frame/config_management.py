@@ -2,6 +2,9 @@ import json
 import random
 from pathlib import Path
 from typing import Iterable, TypedDict, Literal
+from importlib.resources import read_text
+
+import photo_frame
 
 CURRENT_FOLDER = None
 SEEN_PICTURES = []
@@ -101,3 +104,12 @@ def choose_folder(config_dict: dict, root_folder_level: int):
 def sample_config_random(config_dict: dict):
     config = {key: random.random() * value for key, value in config_dict.items()}
     return max(config, key=config.get)
+
+
+def setup_program_config_file():
+    local_program_config_file = Path('local_config.json')
+    if not local_program_config_file.exists():
+        base_config = json.loads(read_text(photo_frame, 'config.json'))
+        with open(local_program_config_file, 'w', encoding='UTF-8') as f:
+            json.dump(base_config, f)
+    return local_program_config_file

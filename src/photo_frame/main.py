@@ -1,16 +1,22 @@
 from pathlib import Path
 
 import PySimpleGUI as sg
-from tqdm import tqdm
 
-from picture_frame.config_management import get_program_config, load_photo_config, sample_config_random, \
-    save_config_file, sample_config_maintain_folder, ProgramConfig
+from photo_frame.config_management import get_program_config, load_photo_config, sample_config_random, \
+    save_config_file, sample_config_maintain_folder, setup_program_config_file
 
-config_path = Path('picture_frame/config.json')
+config_path = Path('local_config.json')
 
 
-def main(photos_config: dict, program_config: ProgramConfig):
-    from picture_frame.UI import convert_to_bytes, G_SIZE, graph, window
+def main(config_path: Path = config_path):
+    from photo_frame.UI import convert_to_bytes, G_SIZE, graph, window
+
+    # Read the photos to display
+    setup_program_config_file()
+    program_config = (
+        get_program_config(config_path))
+    photos_config = load_photo_config(program_config)
+
     previous_image = ""
     keep_going = True
     while keep_going:
@@ -18,8 +24,6 @@ def main(photos_config: dict, program_config: ProgramConfig):
             file_to_display = sample_config_maintain_folder(photos_config, program_config)
         else:
             file_to_display = sample_config_random(photos_config)
-
-        print(file_to_display)
 
         if not previous_image == file_to_display:
             try:
@@ -48,9 +52,5 @@ def main(photos_config: dict, program_config: ProgramConfig):
 
 
 if __name__ == "__main__":
-    # Read the photos to display
-    program_config = (
-        get_program_config(config_path))
-    photos_config = load_photo_config(program_config)
     # photos_config = {key: value for key, value in photos_config.items() if '2019_Bristol' in str(key)}
-    main(photos_config, program_config)
+    main()

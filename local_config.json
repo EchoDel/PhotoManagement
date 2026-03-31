@@ -1,0 +1,1 @@
+{"photo_folder": "smb://rhino.local/photos/", "disallowed_folders": ["charly photos", "Parry_Photos"], "photos_config": "photos.json", "seconds_to_show": 10, "sampling_strategy": "folder", "folder_sampling_level": 3}
