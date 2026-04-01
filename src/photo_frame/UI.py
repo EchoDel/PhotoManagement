@@ -1,5 +1,4 @@
 from pathlib import Path
-import os
 
 import PySimpleGUI as sg
 from PIL import Image, ExifTags, ImageOps
@@ -14,10 +13,6 @@ G_SIZE = (1920, 1080)          # Size of the Graph in pixels. Using a 1 to 1 map
 
 sg.theme('black')
 register_heif_opener()
-
-if os.environ.get('DISPLAY','') == '':
-    print('no display found. Using :0')
-    os.environ.__setitem__('DISPLAY', ':0')
 
 
 def normalise_rotation_tiff(image: Image.Image):
