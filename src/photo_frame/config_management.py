@@ -4,6 +4,8 @@ from pathlib import Path
 from typing import Iterable, TypedDict, Literal
 from importlib.resources import read_text
 
+from tqdm import tqdm
+
 import photo_frame
 
 CURRENT_FOLDER = None
@@ -55,7 +57,7 @@ def load_photo_config(program_config: ProgramConfig):
     else:
         photos = {}
 
-    for photo_sub_folder in photo_folder.glob('*'):
+    for photo_sub_folder in tqdm(photo_folder.glob('*')):
         if photo_sub_folder.stem in disallowed_folders:
             continue
         else:
