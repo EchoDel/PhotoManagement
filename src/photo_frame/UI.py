@@ -16,8 +16,8 @@ sg.theme('black')
 register_heif_opener()
 
 if os.environ.get('DISPLAY','') == '':
-    print('no display found. Using :0.0')
-    os.environ.__setitem__('DISPLAY', ':0.0')
+    print('no display found. Using :0')
+    os.environ.__setitem__('DISPLAY', ':0')
 
 
 def normalise_rotation_tiff(image: Image.Image):
