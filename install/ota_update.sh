@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check for updates
-cd /home/pi/PhotoManagement/
+cd /home/raspberry/PhotoManagement/
 git fetch
 LOCAL=$(git rev-parse HEAD)
 REMOTE=$(git rev-parse @{u})

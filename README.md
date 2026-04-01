@@ -5,6 +5,9 @@
 # Install photo frame
 
 1. Set up a new raspberry pi
+   2. Install python
+   3. Install pipx
+   4. Install poetry
 3. clone the git repo,
    * `git clone https://github.com/EchoDel/PhotoManagement.git`
 4. Change to that folder

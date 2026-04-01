@@ -3,7 +3,7 @@ Description=Service to display a photo from a NAS
 
 [Service]
 Type=simple
-ExecStart=/home/pi/PhotoManagement/install/launch_photo_frame.sh
+ExecStart=/home/raspberry/PhotoManagement/install/launch_photo_frame.sh
 Restart=always
 
 [Install]
