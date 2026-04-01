@@ -57,7 +57,10 @@ def load_photo_config(program_config: ProgramConfig):
     else:
         photos = {}
 
-    for photo_sub_folder in tqdm(photo_folder.glob('*')):
+    pbar = tqdm(total=len([x for x in photo_folder.glob('*')]))
+    for photo_sub_folder in photo_folder.glob('*'):
+        pbar.set_description(photo_sub_folder)
+        pbar.update()
         if photo_sub_folder.stem in disallowed_folders:
             continue
         else:
