@@ -8,15 +8,25 @@
    2. Install python
    3. Install pipx
    4. Install poetry
+5. Mount network drive on startup
 3. clone the git repo,
    * `git clone https://github.com/EchoDel/PhotoManagement.git`
 4. Change to that folder
    * `cd PhotoManagement`
 5. Copy the service 
-   * `sudo cp ./install/PhotoManagement.service /etc/systemd/system/PhotoManagement.service`
+   * `sudo cp ./install/PhotoFrame.service /etc/systemd/system/PhotoFrame.service`
 6. Launch the service for the first time
-   * `sudo systemctl start PhotoManagement.service`
+   * `sudo systemctl start PhotoFrame.service`
    * Validate that it has started correctly
 7. Setup the automated updates
    * `crontab -e`
-   * `Add the following;  */5 * * * * /home/pi/PhotoManagement/install/ota_update.sh`
+   * `Add the following;  */5 * * * * /home/raspberry/PhotoManagement/install/ota_update.sh`
+
+
+# todo
+
+[ ] Move the config generation to its own process
+[ ] Rework next picture timing to be actually 10 seconds
+[ ] Add calendar support
+[ ] Rework UI to use Kivy
+
