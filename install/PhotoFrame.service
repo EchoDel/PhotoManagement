@@ -5,8 +5,6 @@ Description=Service to display a photo from a NAS
 Type=simple
 ExecStart=/home/raspberry/PhotoManagement/install/launch_photo_frame.sh
 Restart=always
-Environment=DISPLAY=:0
-Environment=WAYLAND_DISPLAY=wayland-0
 
 [Install]
 WantedBy=graphical.target
