@@ -5,6 +5,7 @@ Wants=graphical.target
 
 [Service]
 Type=simple
+User=raspberry
 ExecStart=/home/raspberry/PhotoManagement/install/launch_photo_frame.sh
 Restart=always
 
