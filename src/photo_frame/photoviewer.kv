@@ -1,0 +1,20 @@
+#:kivy 1.0.9
+
+<Picture>:
+    # each time a picture is created, the image can delay the loading
+    # as soon as the image is loaded, ensure that the center is changed
+    # to the center of the screen.
+    size: image.size
+    size_hint: None, None
+
+    Image:
+        id: image
+        source: root.source
+        size_hint: 1, 1
+        size: 400, 400 / self.image_ratio
+
+
+<PhotoView>:
+    BoxLayout:
+        orientation: "vertical"
+        size_hint: 1, 1

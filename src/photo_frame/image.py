@@ -1,6 +1,5 @@
 from pathlib import Path
 
-import PySimpleGUI as sg
 from PIL import Image, ExifTags, ImageOps
 from PIL.TiffTags import TAGS
 import PIL
@@ -9,9 +8,7 @@ import base64
 
 from pillow_heif import register_heif_opener
 
-G_SIZE = (1920, 1080)          # Size of the Graph in pixels. Using a 1 to 1 mapping of pixels to pixels
 
-sg.theme('black')
 register_heif_opener()
 
 
@@ -69,23 +66,3 @@ def convert_to_bytes(file_or_bytes, resize=None):
     img_width, img_height = img.size
     del img
     return bio.getvalue(), img_width, img_height
-
-
-graph = sg.Graph(canvas_size=G_SIZE,
-                 graph_bottom_left=(0, 0),
-                 graph_top_right=G_SIZE,
-                 enable_events=True,
-                 key='-GRAPH-',
-                 pad=(0, 0))
-
-layout = [[graph]]
-
-window = sg.Window('Scrolling Image Viewer',
-                   layout,
-                   margins=(0, 0),
-                   use_default_focus=False,
-                   finalize=True,
-                   no_titlebar=True)
-
-window.Maximize()
-window.bind("<Escape>", "-ESCAPE-")
